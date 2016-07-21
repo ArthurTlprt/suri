@@ -10,8 +10,9 @@
     "cookie-parser": "latest",
     "debug": "latest",
     "express": "latest",
-    "pug": "latest",
+    "mongoose": "^4.5.5",
     "morgan": "latest",
+    "pug": "latest",
     "serve-favicon": "latest"
   }
 }
