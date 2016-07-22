@@ -8,7 +8,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 
-var Admin = require('admin');
 
 var routes = require('./routes/index');
 var admin = require('./models/admin');

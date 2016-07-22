@@ -46,20 +46,20 @@ router.get('/', function(req, res, next) {
   res.render('index', content);
 });
 
-router.get('/admin', function(req, res, next) {
-  res.render('admin',content);
+router.get('/login', function(req, res, next) {
+  res.render('login',content);
 });
 
 router.post('/login', function(req, res, next) {
   console.log(req.body.email);
   console.log(req.body.password);
-  res.render('admin',content);
+  res.render('login',content);
 });
 
 router.post('/add', function(req, res, next) {
   console.log(req.body.email);
   console.log(req.body.password);
-  res.render('admin',content);
+  res.render('login',content);
 });
 
 module.exports = router;
