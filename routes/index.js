@@ -32,10 +32,10 @@ var content = {
     {title: 'titre', src:'/images/about/1.jpg', text: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?'}
   ],
   members: [
-    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/4.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/4.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/4.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/4.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'}
+    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/1.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
+    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/3.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
+    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/5.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
+    {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/6.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'}
   ],
   facebook: 'https://www.facebook.com/SuricatesIllumines/?fref=ts'
 
