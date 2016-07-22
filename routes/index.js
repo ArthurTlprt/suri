@@ -51,7 +51,14 @@ router.get('/admin', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  console.log(req.body);
+  console.log(req.body.email);
+  console.log(req.body.password);
+  res.render('admin',content);
+});
+
+router.post('/add', function(req, res, next) {
+  console.log(req.body.email);
+  console.log(req.body.password);
   res.render('admin',content);
 });
 

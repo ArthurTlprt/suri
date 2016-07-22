@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
+
+var Admin = require('admin');
 
 var routes = require('./routes/index');
 var admin = require('./models/admin');
@@ -22,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 app.use('/', routes);
 
@@ -63,5 +68,38 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("i'm logged in");
 });
+
+//  Configure type of connection
+passport.use(new Strategy(
+  function(email, password, cb) {
+    Admin.find({ email : email }, function(err, admin) {
+      if (err) return cb(err);
+      if (!admin[0]){
+        return cb(null, false);
+      }
+      bcrypt.compare(password, admin[0].password, function(err, res) {
+        if(res == true){
+          return cb(null, admin[0]);
+        }else{
+          return cb(null, false);
+        }
+      });
+    });
+  }));
+// Configure Passport authenticated session persistence.
+passport.serializeUser(function(admin, cb) {
+  cb(null, admin._id);
+});
+
+passport.deserializeUser(function(id, cb) {
+  User.find({ _id : id }, function(err, admin){
+    //console.log(JSON.stringify(admin,null, 4));
+    if (err) { return cb(err); }
+    cb(null, admin[0]);
+  })
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 module.exports = app;
