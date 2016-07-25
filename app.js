@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-mongoose.connect('mongodb://localhost/suri');
+mongoose.connect('mongodb://92.222.88.60/suri');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
