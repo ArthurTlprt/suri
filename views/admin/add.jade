@@ -1,0 +1,52 @@
+doctype html
+html(lang='fr')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title #{title}
+    // Bootstrap Core CSS
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='/stylesheets/agency.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='/stylesheets/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Kaushan+Script', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    body#page-top.index
+      section
+        .container
+          .row
+            .col-md-4.col-md-offset-4.text-center
+              form.form-signin(method="post", action="/admin/add")
+                h2.form-signin-heading Créer un nouvel admin
+                label.sr-only(for='inputEmail') Son addresse email
+                input#inputEmail.form-control(type='email', placeholder='Son addresse email', required='', autofocus='', name='email')
+                br
+                label.sr-only(for='inputPassword') et son mot de passe :)
+                input#inputPassword.form-control(type='password', placeholder='et son mot de passe', required='', name='password')
+                br
+                br
+                button.btn.btn-lg.btn-primary.btn-block(type='submit') envoie
+      // jQuery
+      script(src='/javascripts/jquery.js')
+      // Bootstrap Core JavaScript
+      script(src='/javascripts/bootstrap.min.js')
+      // Plugin JavaScript
+      script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
+      script(src='/javascripts/classie.js')
+      script(src='/javascripts/cbpAnimatedHeader.js')
+      // Contact Form JavaScript
+      script(src='/javascripts/jqBootstrapValidation.js')
+      script(src='/javascripts/contact_me.js')
+      // Custom Theme JavaScript
+      script(src='/javascripts/agency.js')

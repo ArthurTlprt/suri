@@ -6,11 +6,6 @@ var AdminSchema = new mongoose.Schema({
 })
 
 
-AdminSchema.methods.add = function(newAdmin){
-  // code...
-  this.save();
-}
-
 var AdminModel = mongoose.model('admin', AdminSchema);
 
 var admin = AdminModel;

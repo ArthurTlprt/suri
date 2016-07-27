@@ -18,5 +18,8 @@
     "passport-local": "^1.0.0",
     "pug": "latest",
     "serve-favicon": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }
