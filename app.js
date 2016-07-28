@@ -11,6 +11,9 @@ var Strategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var post = require('./routes/post');
+
+//var Post = require('./models/post');
 var Admin = require('./models/admin');
 
 var app = express();
@@ -30,6 +33,7 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 
 app.use('/', routes);
 app.use('/admin', admin);
+app.use('/post', post);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

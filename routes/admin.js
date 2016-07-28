@@ -27,7 +27,6 @@ router.post('/add', function(req, res, next) {
 				console.log(err);
         res.redirect('add');
       }
-      console.log('it works');
     });
     // req.login(newAdmin, function(err){
     //   if(err) throw err;
