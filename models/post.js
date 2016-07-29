@@ -6,6 +6,10 @@ var PostSchema = new mongoose.Schema({
   img: String
 })
 
+// PostSchema.prototype.add(title, body, ) {
+//
+// }
+
 
 var PostModel = mongoose.model('post', PostSchema);
 

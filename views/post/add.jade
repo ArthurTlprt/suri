@@ -46,17 +46,24 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
   .row
     .col-lg-12.text-center
       h1 Ajouter une nouvelle actualité!
-      .form-group
-        label(for='usr') titre:
-        input#usr.form-control(type='text')
-    .form-group
-      label.control-label charger un
-      label.btn.btn-default.btn-file
-        | fichier
-        input(type='file', style='display: none;')
-      .form-group
-        label(for='comment') Corps:
-        textarea#comment.form-control(rows='5')
+    form(method='post', action='/post/add', encType='multipart/form-data')
+      .col-lg-6.text-center
+        .form-group
+            label(for='usr') titre:
+            input#usr.form-control(type='text', name='title')
+      .col-lg-6.text-center
+        .form-group
+          label.control-label charger un
+          br
+          label.btn.btn-default.btn-file
+            | fichier
+            input(type='file', style='display: none;', name='img')
+      .col-lg-12.text-center
+        .form-group
+          label(for='comment') Corps:
+          textarea#comment.form-control(rows='5', name='body')
+      .col-lg-12.text-center
+        button.btn.btn-default(type='submit') Ajouter
 
   // /.row
 // /.container
