@@ -12,6 +12,7 @@
     "debug": "latest",
     "express": "latest",
     "express-session": "^1.14.0",
+    "fs": "0.0.2",
     "mongoose": "^4.5.5",
     "morgan": "latest",
     "multer": "^1.1.0",

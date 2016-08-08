@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var multer  = require('multer');
-var upload = multer({ dest: '../public/images/team' });
 var router = express.Router();
 
 var Post = require('../models/post');
@@ -24,17 +23,22 @@ router.get('/add', function(req, res, next) {
   res.render('post/add', {});
 });
 
-router.post('/add', upload.single('img'), function(req, res, next) {
+router.post('/add', multer({ dest: './public/images/team/' }).single('img'), function(req, res, next) {
+
   if (!req.file) {
-       res.send('No files were uploaded.');
-       //return;
-   }
+     res.send('No files were uploaded.');
+  }
+
   newPost = new Post({
     title: req.body.title,
-    body: req.body.body
+    body: req.body.body,
+    img: req.file.path
   });
   newPost.save();
+
+  res.status(204).end();
   res.render('post/add', {});
+  
 });
 
 module.exports = router;

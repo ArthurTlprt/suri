@@ -46,7 +46,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
   .row
     .col-lg-12.text-center
       h1 Ajouter une nouvelle actualité!
-    form(method='post', action='/post/add', encType='multipart/form-data')
+    form(method="post", action='/post/add', enctype='multipart/form-data')
       .col-lg-6.text-center
         .form-group
             label(for='usr') titre:
@@ -57,7 +57,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
           br
           label.btn.btn-default.btn-file
             | fichier
-            input(type='file', style='display: none;', name='img')
+            input(type='file', style='display: none;', name='img', accept='application/x-zip-compressed,image/*')
       .col-lg-12.text-center
         .form-group
           label(for='comment') Corps:
