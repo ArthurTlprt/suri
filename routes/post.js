@@ -8,7 +8,7 @@ var Post = require('../models/post');
 
 router.get('/', function(req, res, next) {
   Post.find({}, function(err, posts){
-    //if(err) { console.log(err); }
+    if(err) { console.log(err); }
     console.log(posts);
     res.render('post/index', {posts});
   })
@@ -23,7 +23,7 @@ router.get('/add', function(req, res, next) {
   res.render('post/add', {});
 });
 
-router.post('/add', multer({ dest: './public/images/team/' }).single('img'), function(req, res, next) {
+router.post('/add', multer({ dest: './public/images/posts/' }).single('img'), function(req, res, next) {
 
   if (!req.file) {
      res.send('No files were uploaded.');
@@ -32,13 +32,13 @@ router.post('/add', multer({ dest: './public/images/team/' }).single('img'), fun
   newPost = new Post({
     title: req.body.title,
     body: req.body.body,
-    img: req.file.path
+    img: req.file.path.split("public").pop()
   });
   newPost.save();
 
   res.status(204).end();
   res.render('post/add', {});
-  
+
 });
 
 module.exports = router;
