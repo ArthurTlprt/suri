@@ -9,14 +9,14 @@ var Post = require('../models/post');
 router.get('/', function(req, res, next) {
   Post.find({}, function(err, posts){
     if(err) { console.log(err); }
-    console.log(posts);
     res.render('post/index', {posts});
   })
 });
 
 router.get('/delete/:id', function(req, res, next) {
   console.log('id of the post to delete', req.params.id);
-  res.render('post/index', {});
+  Post.find({ _id: req.params.id}).remove().exec();
+  res.redirect('/post');
 });
 
 router.get('/add', function(req, res, next) {
