@@ -9,7 +9,9 @@ var Admin = require('../models/admin');
 
 
 router.get('/', function(req, res, next) {
-  res.render('admin/index', {});
+  Admin.find({}, function(err, admins) {
+    res.render('admin/index', {admins: admins});
+  });
 });
 
 router.get('/add', function(req, res, next) {
