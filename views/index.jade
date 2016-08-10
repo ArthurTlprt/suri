@@ -82,9 +82,9 @@ html(lang='fr')
           each post in posts
             .col-md-4.portfolio-item
               a(href='#')
-                img.img-responsive(src= post.src, alt='')
+                img.img-responsive(src= post.img, alt='')
               h3= post.title
-              p= post.text
+              p= post.body
     // About Section
     section#about
       .container
