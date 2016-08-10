@@ -13,6 +13,7 @@ var multer = require('multer');
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
 var post = require('./routes/post');
+var timeline = require('./routes/timeline');
 
 //var Post = require('./models/post');
 var Admin = require('./models/admin');
@@ -35,6 +36,7 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 app.use('/', routes);
 app.use('/admin', admin);
 app.use('/post', post);
+app.use('/timeline', timeline);
 
 
 // catch 404 and forward to error handler

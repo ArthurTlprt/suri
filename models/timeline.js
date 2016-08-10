@@ -1,17 +1,14 @@
 var mongoose = require('mongoose');
 
-var PostSchema = new mongoose.Schema({
+var TimelineSchema = new mongoose.Schema({
   title: String,
+  date: Number,
   body: String,
   img: String
 })
 
-// PostSchema.prototype.add(title, body, ) {
-//
-// }
 
+var TimelineModel = mongoose.model('timeline', TimelineSchema);
 
-var PostModel = mongoose.model('post', PostSchema);
-
-var post = PostModel;
-module.exports = post;
+var timeline = TimelineModel;
+module.exports = timeline;

@@ -98,13 +98,14 @@ html(lang='fr')
               each timeline in timelines
                 li
                   .timeline-image
-                    img.img-circle.img-responsive(src='/images/about/1.jpg', alt='')
+                    img.img-circle.img-responsive(src= timeline.img, alt='')
                   .timeline-panel
                     .timeline-heading
-                      h4 2009-2011
+                      h4.subheading= timeline.date
+                    .timeline-heading
                       h4.subheading= timeline.title
                     .timeline-body
-                      p.text-muted= timeline.text
+                      p.text-muted= timeline.body
               li.timeline-inverted
                 .timeline-image
                   h4
