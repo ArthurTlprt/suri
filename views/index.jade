@@ -125,9 +125,9 @@ html(lang='fr')
           each member in members
             .col-sm-4
               .team-member
-                img.img-circle.img-responsive(src= member.src, alt='')
+                img.img-circle.img-responsive(src= member.img, alt='')
                 h4= member.name
-                p.text-muted= member.depiction
+                p.text-muted= member.legend
                 ul.list-inline.social-buttons
                   li
                     a(href= member.facebook)

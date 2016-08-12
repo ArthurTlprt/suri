@@ -7,6 +7,7 @@ var Strategy = require('passport-local').Strategy;
 var Post = require('../models/post');
 var Timeline = require('../models/timeline');
 var Admin = require('../models/admin');
+var Member = require('../models/member');
 
 
 /* GET home page. */
@@ -25,36 +26,31 @@ router.get('/', function(req, res, next) {
         return 0;
       });
 
-      var content = {
-        title: 'Suricates illuminés',
-        nav: {
-          li1: 'La troupe',
-          li2: 'Actualité',
-          li3: 'Parcours',
-          li4: 'Les comédiens',
-          li5: '(Nous) contacter'
-        },
-        about: {
-          p1: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
-          p2: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
-          p3: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?'
-        },
-        posts: posts,
-        timelines: timelines,
-        members: [
-          {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/1.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-          {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/3.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-          {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/5.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'},
-          {name: 'Justine Daudon', depiction: 'La meuf trop forte', src: '/images/team/6.jpg', facebook: 'https://www.facebook.com/justine.daudon?fref=ts'}
-        ],
-        facebook: 'https://www.facebook.com/SuricatesIllumines/?fref=ts'
+      Member.find({}, function(err, members) {
+        if(err) { console.log(err); }
 
-      };
-
-      res.render('index', content);
-
+        var content = {
+          title: 'Suricates illuminés',
+          nav: {
+            li1: 'La troupe',
+            li2: 'Actualité',
+            li3: 'Parcours',
+            li4: 'Les comédiens',
+            li5: '(Nous) contacter'
+          },
+          about: {
+            p1: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
+            p2: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
+            p3: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?'
+          },
+          posts: posts,
+          timelines: timelines,
+          members: members,
+          facebook: 'https://www.facebook.com/SuricatesIllumines/?fref=ts'
+        };
+        res.render('index', content);
+      });
     });
-
   });
 
   //console.log(posts);
