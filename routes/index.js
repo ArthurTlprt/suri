@@ -1,9 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
 
 var Post = require('../models/post');
 var Timeline = require('../models/timeline');
+var Admin = require('../models/admin');
 
 
 /* GET home page. */
@@ -59,19 +62,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login',content);
+  res.render('login');
 });
 
-router.post('/login', function(req, res, next) {
-  console.log(req.body.email);
-  console.log(req.body.password);
-  res.render('login',content);
+router.get('/logout',
+  function(req, res){
+    req.logout();
+    res.redirect('/');
 });
 
-router.post('/add', function(req, res, next) {
-  console.log(req.body.email);
+router.post('/login',
+  passport.authenticate('local', { failureRedirect: 'login' }),
+  function(req, res) {
+  console.log(req.admin);
   console.log(req.body.password);
-  res.render('login',content);
+  res.redirect('/admin');
 });
+
 
 module.exports = router;

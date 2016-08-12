@@ -18,10 +18,10 @@
     "multer": "^1.1.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "connect-ensure-login": "latest",
     "pug": "latest",
     "serve-favicon": "latest"
   },
   "devDependencies": {
-    "nodemon": "^1.10.0"
   }
 }

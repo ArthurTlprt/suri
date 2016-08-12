@@ -27,10 +27,10 @@ html(lang='fr')
         .container
           .row
             .col-md-4.col-md-offset-4.text-center
-              form.form-signin(method="post", action="/login")
+              form.form-signin(name="login", method="post", action="/login")
                 h2.form-signin-heading C'est par ici l'espace admin!
                 label.sr-only(for='inputEmail') Ton addresse email
-                input#inputEmail.form-control(type='email', placeholder='Ton addresse email', required='', autofocus='', name='email')
+                input#inputEmail.form-control(type='email', placeholder='Ton addresse email', required='', autofocus='', name='username')
                 br
                 label.sr-only(for='inputPassword') et ton mot de passe :)
                 input#inputPassword.form-control(type='password', placeholder='et ton mot de passe', required='', name='password')

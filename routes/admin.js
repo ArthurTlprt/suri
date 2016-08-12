@@ -8,7 +8,7 @@ var router = express.Router();
 var Admin = require('../models/admin');
 
 
-router.get('/', function(req, res, next) {
+router.get('/', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   Admin.find({}, function(err, admins) {
     res.render('admin/index', {admins: admins});
   });
@@ -30,10 +30,10 @@ router.post('/add', function(req, res, next) {
         res.redirect('add');
       }
     });
-    // req.login(newAdmin, function(err){
-    //   if(err) throw err;
-    //   res.redirect('index');
-    // });
+    req.login(newAdmin, function(err){
+      if(err) throw err;
+      res.redirect('/admin');
+    });
   });
 });
 

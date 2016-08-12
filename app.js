@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var multer = require('multer');
+var bcrypt = require('bcrypt');
 
 
 var routes = require('./routes/index');
@@ -32,6 +33,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/admin', admin);
@@ -80,16 +83,18 @@ db.once('open', function() {
 });
 
 //  Configure type of connection
-passport.use(new Strategy(
+passport.use('local', new Strategy(
   function(email, password, cb) {
-    Admin.find({ email : email }, function(err, admin) {
+    console.log('pouet');
+    Admin.find({ email : email }, function(err, admins) {
       if (err) return cb(err);
-      if (!admin[0]){
+      if (!admins[0]){
         return cb(null, false);
       }
-      bcrypt.compare(password, admin[0].password, function(err, res) {
+      console.log(JSON.stringify(admins[0], null, 4));
+      bcrypt.compare(password, admins[0].password, function(err, res) {
         if(res == true){
-          return cb(null, admin[0]);
+          return cb(null, admins[0]);
         }else{
           return cb(null, false);
         }
@@ -102,14 +107,11 @@ passport.serializeUser(function(admin, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  User.find({ _id : id }, function(err, admin){
+  Admin.find({ _id : id }, function(err, admin){
     //console.log(JSON.stringify(admin,null, 4));
     if (err) { return cb(err); }
     cb(null, admin[0]);
   })
 });
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 module.exports = app;
