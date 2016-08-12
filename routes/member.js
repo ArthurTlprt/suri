@@ -3,42 +3,42 @@ var bodyParser = require('body-parser');
 var multer  = require('multer');
 var router = express.Router();
 
-var Timeline = require('../models/timeline');
+var Member = require('../models/member');
 
 
 router.get('/', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
-  Timeline.find({}, function(err, timelines){
+  Member.find({}, function(err, members){
     if(err) { console.log(err); }
-    res.render('timeline/index', {timelines});
+    res.render('member/index', {members});
   })
 });
 
 router.get('/delete/:id', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
-  console.log('id of the timeline to delete', req.params.id);
-  Timeline.find({ _id: req.params.id}).remove().exec();
-  res.redirect('/timeline');
+  console.log('id of the member to delete', req.params.id);
+  Member.find({ _id: req.params.id}).remove().exec();
+  res.redirect('/member');
 });
 
 router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
-  res.render('timeline/add', {});
+  res.render('member/add', {});
 });
 
-router.post('/add', multer({ dest: './public/images/timelines/' }).single('img'), function(req, res, next) {
+router.post('/add', multer({ dest: './public/images/members/' }).single('img'), function(req, res, next) {
 
   if (!req.file) {
      res.send('No files were uploaded.');
   }
 
-  newTimeline = new Timeline({
-    date: req.body.date,
-    title: req.body.title,
-    body: req.body.body,
-    img: req.file.path.split("public").pop()
+  newMember = new Member({
+    name: req.body.name,
+    legend: req.body.legend,
+    img: req.file.path.split("public").pop(),
+    facebook: req.body.facebook
   });
-  newTimeline.save();
+  newMember.save();
 
   res.status(204).end();
-  res.render('timeline/add', {});
+  res.render('member/add', {});
 
 });
 

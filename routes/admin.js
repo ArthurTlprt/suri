@@ -14,11 +14,11 @@ router.get('/', require('connect-ensure-login').ensureLoggedIn('../login'), func
   });
 });
 
-router.get('/add', function(req, res, next) {
+router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   res.render('admin/add', {});
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   bcrypt.hash(req.body.password, 8, function(err, hash) {
     var newAdmin = new Admin({
       email: req.body.email,

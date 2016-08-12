@@ -6,24 +6,24 @@ var router = express.Router();
 var Post = require('../models/post');
 
 
-router.get('/', function(req, res, next) {
+router.get('/', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   Post.find({}, function(err, posts){
     if(err) { console.log(err); }
     res.render('post/index', {posts});
   })
 });
 
-router.get('/delete/:id', function(req, res, next) {
+router.get('/delete/:id', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   console.log('id of the post to delete', req.params.id);
   Post.find({ _id: req.params.id}).remove().exec();
   res.redirect('/post');
 });
 
-router.get('/add', function(req, res, next) {
+router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   res.render('post/add', {});
 });
 
-router.post('/add', multer({ dest: './public/images/posts/' }).single('img'), function(req, res, next) {
+router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), multer({ dest: './public/images/posts/' }).single('img'), function(req, res, next) {
 
   if (!req.file) {
      res.send('No files were uploaded.');

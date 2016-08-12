@@ -65,7 +65,7 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
-router.get('/logout',
+router.get('/logout', require('connect-ensure-login').ensureLoggedIn('../login'),
   function(req, res){
     req.logout();
     res.redirect('/');
