@@ -1,8 +1,12 @@
 extends ../layout
 
 block content
-      h1 Bienvenue dans l'espace administrateur
-      p Voici la liste des mails des administrateurs
+      h1.col-md-12.portfolio-item Bienvenue dans l'espace administrateur
+      .row
+        h4.col-md-4.portfolio-item Voici la liste des mails des administrateurs
+        a.btn.btn-default.col-md-2.portfolio-item(type='button', href='/admin/add')
+          span.glyphicon.glyphicon-plus(aria-hidden='true')
+          |  Ajouter
       .row
         each admin in admins
           .col-md-4.portfolio-item

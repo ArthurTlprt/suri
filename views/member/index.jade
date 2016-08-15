@@ -1,7 +1,15 @@
 extends ../layout
 
 block content
-      h1 Bienvenue dans l'espace administrateur
+      .row
+        h1.col-md-8 Voici tous les membres
+        br
+        br
+        a.btn.btn-default.col-md-2.portfolio-item(type='button', href='/member/add')
+          span.glyphicon.glyphicon-plus(aria-hidden='true')
+          |  Ajouter
+      br
+      br
       .row
       each member in members
         .col-sm-4
