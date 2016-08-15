@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+      .row
+        h1.col-md-8 Voici tous les messages reçus
+      br
+      br
+      .row
+      each message in messages
+        .col-sm-4
+          h4= message.name
+          p.text-muted= message.email
+          p.text-muted= message.phone
+          p= message.message
+          a.btn.btn-default(type='button', href='/message/delete/' + message.id )
+            span.glyphicon.glyphicon-trash(aria-hidden='true')
+            |  Supprimer
+
+  script(src='/javascripts/jquery.js')
+// Bootstrap Core JavaScript
+script(src='/javascripts/bootstrap.min.js')

@@ -8,7 +8,7 @@ var Post = require('../models/post');
 var Timeline = require('../models/timeline');
 var Admin = require('../models/admin');
 var Member = require('../models/member');
-var Contact = require('../models/contact');
+//var Contact = require('../models/contact');
 
 
 /* GET home page. */
@@ -75,18 +75,6 @@ router.post('/login',
   console.log(req.admin);
   console.log(req.body.password);
   res.redirect('/admin');
-});
-
-router.post('/contact', function(req, res) {
-  console.log(req.body.name);
-  var newContact = new Contact({
-    name: req.body.name,
-    email: req.body.email,
-    phone: req.body.phone,
-    message: req.body.message
-  });
-  newContact.save();
-  res.redirect('/');
 });
 
 

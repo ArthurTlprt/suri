@@ -16,6 +16,7 @@ var admin = require('./routes/admin');
 var post = require('./routes/post');
 var member = require('./routes/member');
 var timeline = require('./routes/timeline');
+var message = require('./routes/message');
 
 //var Post = require('./models/post');
 var Admin = require('./models/admin');
@@ -42,6 +43,7 @@ app.use('/admin', admin);
 app.use('/post', post);
 app.use('/timeline', timeline);
 app.use('/member', member);
+app.use('/message', message);
 
 
 // catch 404 and forward to error handler
