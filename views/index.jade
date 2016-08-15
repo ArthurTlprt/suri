@@ -145,21 +145,21 @@ html(lang='fr')
             h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
         .row
           .col-lg-12
-            form#contactForm(name='sentMessage', novalidate='')
+            form#contactForm(method="post", action='/contact', name='sentMessage')
               .row
                 .col-md-6
                   .form-group
-                    input#name.form-control(type='text', placeholder='Your Name *', required='', data-validation-required-message='Please enter your name.')
+                    input#name.form-control(name='name', type='text', placeholder='Votre nom *', required='true', data-validation-required-message='Veuillez rentrer votre nom.')
                     p.help-block.text-danger
                   .form-group
-                    input#email.form-control(type='email', placeholder='Your Email *', required='', data-validation-required-message='Please enter your email address.')
+                    input#email.form-control(name='email', type='email', placeholder='Votre Email *', required='true', data-validation-required-message='Veuillez rentrer votre addresse email.')
                     p.help-block.text-danger
                   .form-group
-                    input#phone.form-control(type='tel', placeholder='Your Phone *', required='', data-validation-required-message='Please enter your phone number.')
+                    input#phone.form-control(name='tel', type='tel', placeholder='Votre Phone *', required='true', data-validation-required-message='Veuillez rentrer votre numéro de téléphone.')
                     p.help-block.text-danger
                 .col-md-6
                   .form-group
-                    textarea#message.form-control(placeholder='Your Message *', required='', data-validation-required-message='Please enter a message.')
+                    textarea#message.form-control(name='message', placeholder='Votre Message *', required='true', data-validation-required-message='Veuillez rentrer votre message.')
                     p.help-block.text-danger
                 .clearfix
                 .col-lg-12.text-center
@@ -169,7 +169,7 @@ html(lang='fr')
       .container
         .row
           .col-md-4
-            span.copyright Copyright © Your Website 2014
+            span.copyright Copyright © Votre Website 2014
           .col-md-4
             ul.list-inline.social-buttons
               li
@@ -348,6 +348,5 @@ html(lang='fr')
     script(src='/javascripts/cbpAnimatedHeader.js')
     // Contact Form JavaScript
     script(src='/javascripts/jqBootstrapValidation.js')
-    script(src='/javascripts/contact_me.js')
     // Custom Theme JavaScript
     script(src='/javascripts/agency.js')

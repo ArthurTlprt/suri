@@ -8,6 +8,7 @@ var Post = require('../models/post');
 var Timeline = require('../models/timeline');
 var Admin = require('../models/admin');
 var Member = require('../models/member');
+var Contact = require('../models/contact');
 
 
 /* GET home page. */
@@ -41,7 +42,8 @@ router.get('/', function(req, res, next) {
           about: {
             p1: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
             p2: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
-            p3: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?'
+            p3: 'lead Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?',
+            src: 'https://www.youtube.com/watch?v=NLE058XnowM'
           },
           posts: posts,
           timelines: timelines,
@@ -73,6 +75,18 @@ router.post('/login',
   console.log(req.admin);
   console.log(req.body.password);
   res.redirect('/admin');
+});
+
+router.post('/contact', function(req, res) {
+  console.log(req.body.name);
+  var newContact = new Contact({
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    message: req.body.message
+  });
+  newContact.save();
+  res.redirect('/');
 });
 
 
