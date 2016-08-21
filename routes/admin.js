@@ -18,6 +18,11 @@ router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), f
   res.render('admin/add', {});
 });
 
+router.get('/delete/:id', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
+  Admin.find({ _id: req.params.id}).remove().exec();
+  res.redirect('/admin');
+});
+
 router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   bcrypt.hash(req.body.password, 8, function(err, hash) {
     var newAdmin = new Admin({
@@ -30,10 +35,10 @@ router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), 
         res.redirect('add');
       }
     });
-    req.login(newAdmin, function(err){
+    /*req.login(newAdmin, function(err){
       if(err) throw err;
-      res.redirect('/admin');
-    });
+    });*/
+    res.redirect('/admin');
   });
 });
 

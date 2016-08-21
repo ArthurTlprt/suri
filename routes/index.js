@@ -55,11 +55,12 @@ router.get('/', function(req, res, next) {
     });
   });
 
-  //console.log(posts);
-
 });
 
 router.get('/login', function(req, res, next) {
+  if(req._session != undefined){
+    req.logout();
+  }
   res.render('login');
 });
 
@@ -72,8 +73,6 @@ router.get('/logout', require('connect-ensure-login').ensureLoggedIn('../login')
 router.post('/login',
   passport.authenticate('local', { failureRedirect: 'login' }),
   function(req, res) {
-  console.log(req.admin);
-  console.log(req.body.password);
   res.redirect('/admin');
 });
 

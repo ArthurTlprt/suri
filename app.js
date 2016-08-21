@@ -83,19 +83,16 @@ mongoose.connect('mongodb://localhost/suri');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("i'm logged in");
 });
 
 //  Configure type of connection
 passport.use('local', new Strategy(
   function(email, password, cb) {
-    console.log('pouet');
     Admin.find({ email : email }, function(err, admins) {
       if (err) return cb(err);
       if (!admins[0]){
         return cb(null, false);
       }
-      console.log(JSON.stringify(admins[0], null, 4));
       bcrypt.compare(password, admins[0].password, function(err, res) {
         if(res == true){
           return cb(null, admins[0]);
@@ -112,7 +109,6 @@ passport.serializeUser(function(admin, cb) {
 
 passport.deserializeUser(function(id, cb) {
   Admin.find({ _id : id }, function(err, admin){
-    //console.log(JSON.stringify(admin,null, 4));
     if (err) { return cb(err); }
     cb(null, admin[0]);
   })
