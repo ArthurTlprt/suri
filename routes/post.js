@@ -37,7 +37,7 @@ router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), 
   newPost.save();
 
   res.status(204).end();
-  res.render('post/add', {});
+  res.redirect('/post');
 
 });
 

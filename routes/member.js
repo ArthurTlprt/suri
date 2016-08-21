@@ -38,7 +38,7 @@ router.post('/add', multer({ dest: './public/images/members/' }).single('img'), 
   newMember.save();
 
   res.status(204).end();
-  res.render('member/add', {});
+  res.redirect('/member');
 
 });
 

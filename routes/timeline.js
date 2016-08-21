@@ -38,7 +38,7 @@ router.post('/add', multer({ dest: './public/images/timelines/' }).single('img')
   newTimeline.save();
 
   res.status(204).end();
-  res.render('timeline/add', {});
+  res.redirect('/timeline');
 
 });
 
