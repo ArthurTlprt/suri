@@ -32,12 +32,13 @@ router.post('/add', require('connect-ensure-login').ensureLoggedIn('../login'), 
     newAdmin.save(function(err) {
       if (err) {
 				console.log(err);
-        res.redirect('add');
+        res.redirect('/admin');
       }
     });
-    /*req.login(newAdmin, function(err){
+    req.logout();
+    req.login(newAdmin, function(err){
       if(err) throw err;
-    });*/
+    });
     res.redirect('/admin');
   });
 });

@@ -77,7 +77,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-//mongoose.connect('mongodb://92.222.88.60/suri');
+//mongoose.connect('mongodb://0.0.0.0:27017/suri');
 mongoose.connect('mongodb://localhost/suri');
 
 var db = mongoose.connection;
