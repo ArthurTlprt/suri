@@ -14,7 +14,7 @@ router.get('/', require('connect-ensure-login').ensureLoggedIn('../login'), func
   });
 });
 
-router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
+router.get('/add', /*require('connect-ensure-login').ensureLoggedIn('../login'),*/ function(req, res, next) {
   res.render('admin/add', {});
 });
 
