@@ -2,11 +2,11 @@ extends ../layout
 
 block content
   h1 Ajouter une nouvelle actualité!
-  form(method="post", action='/post/add', enctype='multipart/form-data')
+  form(method="post", action='/post/edit/' + post.id, enctype='multipart/form-data')
     .col-lg-6.text-center
       .form-group
           label(for='usr') titre:
-          input#usr.form-control(type='text', name='title')
+          input#usr.form-control(type='text', name='title', value=post.title)
     .col-lg-6.text-center
       .form-group
         label.control-label charger un
@@ -17,7 +17,7 @@ block content
     .col-lg-12.text-center
       .form-group
         label(for='comment') Corps:
-        textarea#comment.form-control(rows='5', name='body')
+        textarea#comment.form-control(rows='5', name='body')= post.body
     .col-lg-12.text-center
       button.btn.btn-default(type='submit') Ajouter
 
