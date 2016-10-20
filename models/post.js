@@ -10,9 +10,6 @@ var PostSchema = new mongoose.Schema({
 //
 // }
 
-PostSchema.methods.update = function() {
-  this.save();
-}
 
 
 var PostModel = mongoose.model('post', PostSchema);

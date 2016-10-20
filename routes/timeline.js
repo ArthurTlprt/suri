@@ -19,6 +19,26 @@ router.get('/delete/:id', require('connect-ensure-login').ensureLoggedIn('../log
   res.redirect('/timeline');
 });
 
+router.get('/edit/:id', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
+  console.log('id of the timeline to edit', req.params.id);
+  Timeline.findById(req.params.id, function(err, timeline) {
+    res.render('timeline/edit', {timeline});
+  });
+});
+
+router.post('/edit/:id', require('connect-ensure-login').ensureLoggedIn('../login'), multer({ dest: './public/images/timelines/' }).single('img'), function(req, res, next) {
+  Timeline.findById(req.params.id, function(err, timeline) {
+    if (req.file) {
+      timeline.img = req.file.path.split("public").pop();
+    }
+    timeline.date = req.body.date;
+    timeline.title = req.body.title;
+    timeline.body = req.body.body;
+    timeline.save();
+    res.redirect('/timeline');
+  });
+});
+
 router.get('/add', require('connect-ensure-login').ensureLoggedIn('../login'), function(req, res, next) {
   res.render('timeline/add', {});
 });

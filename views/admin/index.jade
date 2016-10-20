@@ -11,7 +11,7 @@ block content
         each admin in admins
           .col-md-4.portfolio-item
             h3= admin.email
-            a.btn.btn-default(type='button', href='/admin/delete/' + admin.id )
+            a.btn.btn-danger(type='button', href='/admin/delete/' + admin.id )
               span.glyphicon.glyphicon-trash(aria-hidden='true')
               |  Supprimer
   // /.row

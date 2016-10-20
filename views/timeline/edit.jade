@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  h1 Ajouter une nouvelle actualité!
+  form(method="post", action='/timeline/edit/'+timeline.id, enctype='multipart/form-data')
+    .col-lg-6.text-center
+      .form-group
+          label(for='usr') titre:
+          input#usr.form-control(type='text', name='title', value= timeline.title)
+      .form-group
+          label(for='usr') Année:
+          input#usr.form-control(type='number', name='date', value= timeline.date)
+    .col-lg-6.text-center
+      .form-group
+        label.control-label charger un
+        br
+        label.btn.btn-default.btn-file
+          | fichier
+          input(type='file', style='display: none;', name='img', accept='application/x-zip-compressed,image/*')
+    .col-lg-12.text-center
+      .form-group
+        label(for='comment') Corps:
+        textarea#comment.form-control(rows='5', name='body')= timeline.body
+    .col-lg-12.text-center
+      button.btn.btn-default(type='submit') Ajouter
+
+  // /.row
+// /.container
+// jQuery Version 1.11.1
+script(src='/javascripts/jquery.js')
+// Bootstrap Core JavaScript
+script(src='/javascripts/bootstrap.min.js')
